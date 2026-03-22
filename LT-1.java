@@ -6,8 +6,6 @@ Time Complexity: O(n)
 Space Complexity: O(n)
 */
 
-import java.util.*;
-
 class Solution {
     public int[] twoSum(int[] nums, int target) {
 
