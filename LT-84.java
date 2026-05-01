@@ -2,29 +2,55 @@
  * Problem: 84. Largest Rectangle in Histogram
  * Link: https://leetcode.com/problems/largest-rectangle-in-histogram/
  *
- * Approach:
- * - Use Monotonic Stack to find:
- *   1. Next Smaller Element (NSE) for each index
- *   2. Previous Smaller Element (PSE) for each index
+ * Approach (Optimized - Single Pass Stack):
+ * - Use a monotonic increasing stack storing indices
+ * - Traverse all bars + one extra iteration (i == n)
+ * - While current height is smaller than stack top:
+ *     → Pop index
+ *     → Calculate area using popped height
  *
- * - NSE[i]: index of next smaller element on right
- *   If none → use n (important for width calculation)
+ * - Width calculation:
+ *     if stack empty → width = i
+ *     else → width = i - stack.peek() - 1
  *
- * - PSE[i]: index of previous smaller element on left
- *   If none → use -1
- *
- * - Width of rectangle with height heights[i]:
- *     width = nse[i] - pse[i] - 1
- *
- * - Area:
- *     area = heights[i] * width
- *
- * - Compute max area among all bars
+ * - Keep updating max area
  *
  * Key Insight:
- * - Each bar is treated as the smallest height in its rectangle
- * - Stack helps maintain increasing order of heights
+ * - When a smaller element appears, it finalizes rectangles
+ *   for all taller bars before it
  *
  * Time Complexity: O(n)
  * Space Complexity: O(n)
  */
+
+import java.util.*;
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int n = heights.length;
+        Stack<Integer> st = new Stack<>();
+        int maxArea = 0;
+
+        for (int i = 0; i <= n; i++) {
+            // Treat height = 0 when i == n to flush stack
+            int currHeight = (i == n) ? 0 : heights[i];
+
+            while (!st.isEmpty() && heights[st.peek()] > currHeight) {
+                int height = heights[st.pop()];
+
+                int width;
+                if (st.isEmpty()) {
+                    width = i; // from 0 to i-1
+                } else {
+                    width = i - st.peek() - 1;
+                }
+
+                maxArea = Math.max(maxArea, height * width);
+            }
+
+            st.push(i);
+        }
+
+        return maxArea;
+    }
+}
