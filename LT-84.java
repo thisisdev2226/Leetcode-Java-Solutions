@@ -23,8 +23,6 @@
  * Space Complexity: O(n)
  */
 
-import java.util.*;
-
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int n = heights.length;
