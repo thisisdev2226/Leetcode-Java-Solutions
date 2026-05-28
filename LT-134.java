@@ -17,8 +17,6 @@
  * Space Complexity: O(1)
  */
 
-import java.util.*;
-
 class Solution {
     public static int canCompleteCircuit(int[] gas, int[] cost) {
 
