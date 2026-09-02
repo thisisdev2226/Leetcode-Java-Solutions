@@ -54,7 +54,7 @@ class Solution {
 
             // Check if current window is an anagram of p
             if (matches(pCount, windowCount)) {
-                result.add(i - windowSize + 1); 
+                result.add(i - windowSize + 1);
             }
         }
 
