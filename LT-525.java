@@ -18,7 +18,6 @@ Space Complexity: O(n)
 class Solution {
 public int findMaxLength(int[] nums) {
 
-```
     HashMap<Integer, Integer> map = new HashMap<>();
 
     int sum = 0;
@@ -47,6 +46,5 @@ public int findMaxLength(int[] nums) {
 
     return maxLen;
 }
-```
 
 }
