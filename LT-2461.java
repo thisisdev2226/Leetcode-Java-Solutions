@@ -18,7 +18,6 @@ Space Complexity: O(k)
 class Solution {
 public long maximumSubarraySum(int[] nums, int k) {
 
-```
     HashSet<Integer> set = new HashSet<>();
 
     long currSum = 0;
@@ -50,6 +49,5 @@ public long maximumSubarraySum(int[] nums, int k) {
 
     return maxSum;
 }
-```
 
 }
