@@ -24,9 +24,6 @@ Time Complexity:
 Space Complexity: O(n)
 */
 
-import java.util.Queue;
-import java.util.LinkedList;
-
 class MyStack {
     Queue<Integer> q = new LinkedList<>();
 
